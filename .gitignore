@@ -1,0 +1,8 @@
+# Terraform local state & plugins
+.terraform/
+*.tfstate
+*.tfstate.*
+terraform.tfvars
+override.tf
+override.tf.json
+*.backup
