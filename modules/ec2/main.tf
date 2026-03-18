@@ -18,7 +18,7 @@ resource "aws_instance" "public_ec2" {
   ami           = data.aws_ami.amazon_linux.id
   instance_type = "t3.micro"
 
-  subnet_id = var.public_subnet_id //aws_subnet.public.id
+  subnet_id = var.public_subnet_id[0] //aws_subnet.public.id
 
   vpc_security_group_ids = [aws_security_group.public_sg.id]
 
@@ -35,7 +35,7 @@ resource "aws_instance" "private_ec2" {
   ami           = data.aws_ami.amazon_linux.id
   instance_type = "t3.micro"
 
-  subnet_id = var.private_subnet_id //aws_subnet.private.id
+  subnet_id = var.private_subnet_id[1] //aws_subnet.private.id
 
   vpc_security_group_ids = [aws_security_group.private_sg.id]
 

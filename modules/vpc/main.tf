@@ -33,6 +33,28 @@ resource "aws_subnet" "private" {
   }
 }
 
+# Add for eks cluster
+resource "aws_subnet" "public_2" {
+  vpc_id                  = aws_vpc.main.id
+  cidr_block              = "10.0.3.0/24"
+  availability_zone       = "ap-northeast-2c"
+  map_public_ip_on_launch = true
+
+  tags = {
+    Name = "${var.project}-public-subnet2"
+  }
+}
+
+resource "aws_subnet" "private_2" {
+  vpc_id            = aws_vpc.main.id
+  cidr_block        = "10.0.4.0/24"
+  availability_zone = "ap-northeast-2c"
+
+  tags = {
+    Name = "${var.project}-private-subnet2"
+  }
+}
+
 # Ineternet Gateway & Route Table
 resource "aws_internet_gateway" "igw" {
   vpc_id = aws_vpc.main.id
