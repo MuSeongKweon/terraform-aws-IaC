@@ -79,7 +79,15 @@ resource "aws_route" "public_default" {
 }
 
 resource "aws_route_table_association" "public_assn" {
-  subnet_id      = aws_subnet.public.id
+  //subnet_id      = aws_subnet.public.id
+  
+  count = 2
+
+  subnet_id = element([
+    aws_subnet.public.id,
+    aws_subnet.public_2.id
+  ], count.index)
+  
   route_table_id = aws_route_table.public.id
 }
 
@@ -124,7 +132,15 @@ resource "aws_route" "private_internet_access" {
 
 # Connect to Private Subnet
 resource "aws_route_table_association" "private_assn" {
-  subnet_id      = aws_subnet.private.id
+  //subnet_id      = aws_subnet.private.id
+  
+  count = 2
+
+  subnet_id = element([
+    aws_subnet.private.id,
+    aws_subnet.private_2.id
+  ], count.index)
+
   route_table_id = aws_route_table.private.id
 }
 
