@@ -21,6 +21,13 @@ jobs:
       - name: Terraform 설치
         uses: hashicorp/setup-terraform@v2
 
+      - name: AWS 인증
+        uses: aws-actions/configure-aws-credentials@v2
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ secrets.AWS_REGION }}
+
       - name: Terraform version 확인
         run: terraform version
 
@@ -29,3 +36,6 @@ jobs:
 
       - name: Terraform Validate
         run: terraform validate
+
+      - name: Terraform Apply
+        run: terraform apply -auto-approve
