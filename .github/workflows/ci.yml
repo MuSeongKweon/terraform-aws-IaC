@@ -12,10 +12,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      //- name: Bring out codes
-        //uses: actions/checkout@v3
-      //- name: Terraform install
-        //uses: hashicorp/setup-terraform@v2
+      - name: Bring out codes
+        uses: actions/checkout@v3
+      - name: Terraform install
+        uses: hashicorp/setup-terraform@v2
       - name: Terraform version 확인
         run: terraform version
       //- name: Terraform Init
