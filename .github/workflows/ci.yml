@@ -3,6 +3,8 @@ name: Terraform CI
 on:
   push:
     branches:
+      - main
+      - dev
       - feature/*
 
 jobs:
