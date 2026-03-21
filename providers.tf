@@ -1,6 +1,11 @@
 # For provider setting
 
 terraform {
+  backend "s3" {
+    bucket = "terraform-state-museong-eks"
+    key    = "eks/terraform.tfstate"
+    region = "ap-northeast-2"
+  }
   required_providers {
     aws = {
       source  = "hashicorp/aws"
