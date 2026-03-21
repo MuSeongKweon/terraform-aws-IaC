@@ -1,12 +1,12 @@
 module "vpc" {
-  source = "/Users/museongkweon/Desktop/Career-Develop/Toy-Project/terraform-aws-iac/modules/vpc"
+  source = "./modules/vpc"
 
   project = var.project
   vpc_cidr = var.vpc_cidr
 }
 
 module "ec2" {
-  source = "/Users/museongkweon/Desktop/Career-Develop/Toy-Project/terraform-aws-iac/modules/ec2"
+  source = "./modules/ec2"
 
   project = var.project
 
@@ -18,11 +18,11 @@ module "ec2" {
 }
 
 module "iam" {
-  source = "/Users/museongkweon/Desktop/Career-Develop/Toy-Project/terraform-aws-iac/modules/ssm"
+  source = "./modules/ssm"
 }
 
 module "eks" {
-  source = "/Users/museongkweon/Desktop/Career-Develop/Toy-Project/terraform-aws-iac/modules/eks"
+  source = "./modules/eks"
 
   project           = var.project
   public_subnet_ids  = module.vpc.public_subnet_ids
